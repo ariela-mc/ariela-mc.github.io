@@ -145,7 +145,7 @@ nav .navlinks li a{
     margin-right: 10px;
     transition: 0.5s;
 }
-.hero-tet .social i:hover{
+.hero-text .social i:hover{
     color: #007ced;
     transform: rotate(360deg);
 }
