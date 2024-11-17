@@ -100,7 +100,7 @@ nav .navlinks li a{
     transition: 0.5s;
 }
 .hero-pic img:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 .hero-text{
     max-width: 500px;
@@ -154,8 +154,8 @@ nav .navlinks li a{
 /* Responsive design & displaying navbar for smaller screen */
 @media(max-width: 930px)
 {
-    nav.togglebtn{
-        display:initial;
+    nav .togglebtn{
+        display: initial;
     }
     .click{
         top:45px;
