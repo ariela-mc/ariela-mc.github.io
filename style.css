@@ -106,6 +106,7 @@ nav .navlinks li a{
     max-width: 500px;
     display:flex;
     flex-direction: column;
+    padding-top: 5px;
 }
 .hero-text h5{
     color: #e5e5e5;
@@ -121,6 +122,7 @@ nav .navlinks li a{
 }
 .hero-text p{
     color: #e5e5e5;
+    padding-top: 5px;
 }
 .btn-group{
     margin: 45px 0;
