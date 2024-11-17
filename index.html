@@ -26,6 +26,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Portfolio</a></li>
                         <li><a href="#">Resume</a></li>
+                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </nav>
@@ -35,11 +36,11 @@
                     <img src="images/profile-pic.jpg" alt="profile picture">
                 </div>
                 <div class="hero-text">
-                    <h5>Hi I'm <span class="input">Engineering Student</span></h5>
+                    <h5>Hi I'm <span>Engineering Student</span></h5>
                     <h1>Ariela Mcclame</h1>
                     <p> A second year engineering student at the University of Auckland specialising in Computer Systems. Ariela is a passionate programmer that loves finding out how things work and enjoys reading and gaming in her downtime. She grew up on the Hibiscus Coast and graduated from Kingsway School with a four-year Scholar's Award.</p>
                     <div class="btn-group">
-                        <a href="#" class="btn">Download CV</a>
+                        <a href="#" class="btn active">Download CV</a>
                         <a href="#" class="btn">Contact</a>
                     </div>
 
@@ -51,8 +52,6 @@
             </div>
         </div>
     </div>
-    <!---typed js for typed text effect -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
     <script>
         /* creating button click show hide navbar */
         var togglebtn=document.querySelector(".togglebtn");
@@ -62,13 +61,6 @@
         togglebtn.addEventListener("click", function(){
             this.classList.toggle("click");
             nav.classList.toggle("open");
-        })
-
-        var typed=new Typed(".input", {
-            strings:["Engineering Student"],
-            typedSpeed:70,
-            backSpeed:55,
-            loop:false
         })
     </script>
 </body>
