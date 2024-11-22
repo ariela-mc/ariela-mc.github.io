@@ -58,7 +58,6 @@ nav .togglebtn{
     right: 3%;
     z-index: 5;
     cursor: pointer;
-    background-color: #007ced;
     display: none;
 }
 nav .togglebtn span{
