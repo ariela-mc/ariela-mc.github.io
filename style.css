@@ -1,56 +1,59 @@
-*{
+:root {
+  --prim: #222;
+  --prim-light: #E5E5E5;
+  --sec-light: #333;
+  --sec-dark: #444;
+  --accent: #007CED;
+}
+
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: poppins,sans-serif;
-    text-decoration: none;
+    scroll-behavior: smooth;
+text-decoration: none;
 }
-body{
+
+body {
     overflow-x: hidden;
-}
-.hero-header{
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background: #222;
-}
-.wrapper{
-    width:1280px;
-    max-width: 95%;
+    background: var(--prim);
     margin: 0 auto;
     padding: 0 20px;
+    color: var(--prim-light);
 }
-header{
-    padding: 40px 0 30px;
+
+header {
+    left: 0;
+    position: fixed;
+    height: 50px;
+    padding-bottom: 10px;
+    z-index: 4;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px;
     align-items: center;
     flex-wrap: wrap;
+    width: 100vw;
+    margin: 0;
+    background: var(--prim);
+    
 }
-.logo{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+
+navbar {
+    font-weight: bold;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    padding-top: 25px;
+    background-color: var(--prim);
+    z-index: 5;
 }
-.logo i{
-    height: 45px;
-    width: 45px;
-    background-color: #007ced;
-    border-radius: 50%;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.5rem;
-    padding: 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    text-align: center;
+
+.navlinks li a:hover {
+    color: var(--accent);
 }
-.logo .logo-text{
-    font-size: 24px;
-    font-weight: 500;
-    color: #fff;
-}
-nav .togglebtn{
+navbar .togglebtn {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -60,153 +63,314 @@ nav .togglebtn{
     cursor: pointer;
     display: none;
 }
-nav .togglebtn span{
+
+navbar .togglebtn span {
     display: block;
-    background-color: #007ced;
+    background-color: var(--accent);
     margin: 5px 0px;
     width: 100%;
     height: 3px;
     transition: 0.3s;
     transition-property: transform, opacity;
 }
-nav .navlinks{
+
+navbar .navlinks {
     list-style-type: none;
 }
-nav .navlinks li{
+
+navbar .navlinks li {
     display: inline-block;
 }
-nav .navlinks li a{
-    color: #e5e5e5;
+
+navbar .navlinks li a {
     margin-right: 2.5rem;
+    color: var(--prim-light);
 }
-.container{
+
+#welcome-section {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 100px;
     align-items: center;
-    padding-top: 4rem;
+    padding-top: 180px;
 }
-.container .hero-pic{
+
+#welcome-section .pfp {
     width:300px;
     height:300px;
-    border-radius:50%;
+    border-radius:20%;
     overflow: hidden;
-    border: 15px solid #444;
+    border: 5px solid var(--sec-dark);
     box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 200px;
 }
-.hero-pic img{
+
+.pfp img {
     height: 100%;
     width: 100%;
     transition: 0.5s;
 }
-.hero-pic img:hover{
+
+.pfp img:hover {
     transform: scale(1.1);
 }
-.hero-text{
+
+.about-me-text {
     max-width: 500px;
     display:flex;
     flex-direction: column;
     padding-top: 5px;
+    margin-bottom: 200px;
 }
-.hero-text h5{
-    color: #e5e5e5;
-    font-size: 14px;
+
+.about-me-text h5 {
+    font-size: 18px;
 }
-.hero-text h5 span{ 
-    color: #007ced;
-    font-size: 16px;
+
+.blue-text { 
+    color: var(--accent);
+    font-weight: bold;
 }
-.hero-text h1{
-    color:#007ced;
+
+.about-me-text h1 {
     font-size: 3rem;
 }
-.hero-text p{
-    color: #e5e5e5;
+
+.about-me-text p {
     padding-top: 5px;
+    font-size: 17px;
 }
-.btn-group{
-    margin: 45px 0;
+
+#projects h1, #projects h3 {
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
 }
-.btn-group .btn{
-    border-color: #d5d5d5;
-    color:#fff;
-    background-color: #333;
-    padding: 12px 25px;
-    margin: 5px 0px;
-    margin-right: 7px;
+
+#projects h1 {
+    font-size: 30px;
+    padding-bottom: 0;
+}
+
+#project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+    margin: auto auto;
+}
+
+.project-tile {
+    padding: 10px;
+    background: var(--sec-dark);
+    margin: 10px;
+    border: 5px solid var(--prim);
+}
+
+.project-tile:hover {
+    transform: scale(1.1);
+}
+
+.project-tile:hover, .project-tile:hover h3, .project-tile:hover figcaption {
+    background: var(--prim-light);
+    color: var(--sec-dark);
+}
+
+.project-tile img {
+    height: 200px;
+    position: relative;
+    width: 90%;
+    margin-left: 5%;
+
+}
+
+.project-tile h3 {
+    padding: 0;
+}
+
+a {
+    color: var(--prim-light);
+}
+
+.btn-container {
+    text-align: center;
+    margin-bottom: 100px;
+}
+.btn-show-all {
+    padding: 12px 35px; 
+    font-size: 1rem;
+    background: var(--sec-light);
+    transition: background 0.3s ease-out;
+}
+
+.btn-show-all > i {
+    margin-left: 0;
+}
+
+.btn-show-all:hover {
+    background: var(--sec-dark);
+    padding-right: 25px;
+}
+.btn-show-all:hover > i {
+    margin-left: 10px;
+    transform: translateX(0.2px);
+    transition: transform 0s ease-out;
+
+}
+
+#contact h1 {
+    text-align: center;
+    padding: 30px;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.btn-group, .btn-show-all {
+    background-color: var(--sec-light);
+    margin-bottom: 20px;
     border-radius: 30px;
-    border: 2p solid #e5e5e5;
     box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
+    text-align: center;
+    height: 45px;
 }
-.btn.active{
-    border-color: #007ced;
+
+.btn-group {
+    width: 200px;
+    padding: 12px 25px;
 }
-.hero-text .social i{
+
+.btn-group:hover {
+    background-color: var(--accent);
+    transition: background 0.3s ease-out;
+}
+
+.socials {
+    margin-bottom: 20px;
+    padding: 12px 25px;
+    width: 400px;
+    height: 45px;
+    text-align: center;
+}
+
+.socials i{
     color: #e5e5e5;
-    font-size: 18px;
-    margin-right: 10px;
+    font-size: 25px;
+    margin: 0 15px;
     transition: 0.5s;
 }
-.hero-text .social i:hover{
+
+.socials i:hover{
     color: #007ced;
     transform: rotate(360deg);
 }
-/* Responsive design & displaying navbar for smaller screen */
-@media(max-width: 930px)
-{
-    nav .togglebtn{
+
+@media(max-width: 770px) {
+    navbar .togglebtn {
         display: initial;
+        position: fixed;
+        top: 30px;
     }
-    .click{
+
+    .click {
         top:45px;
     }
-    .click span{
+
+    .click span {
         position: absolute;
         margin-top: 12px;
     }
-    .click span:first-child{
+
+    .click span:first-child {
         transform: rotate(-45deg);
     }
-    .click span:nth-child(2)
-    {
+
+    .click span:nth-child(2) {
         opacity: 0;
         margin: 0;
     }
-    .click span:last-child{
+
+    .click span:last-child {
         transform: rotate(45deg);
         top:0;
     }
-    nav .navlinks{
-        position: absolute;
-        top: 110px;
+
+    navbar .navlinks {
+        position: fixed;
+        top: 0;
         right:-100%;
         bottom:0;
-        width: 60%
-        height: 100vh;
-        background-color: #222;
+        width: 40%;
+        background-color: var(--prim);
         z-index: 3;
         box-shadow: 5px 13px 30px rgba(0,0,0,0.1);
         transition:0.5s;
-        padding: 25px 0px;
+        padding: 20px;
+        padding-top: 100px;
+        padding-left: 50px;
     }
-    nav .navlinks li{
+
+    navbar .navlinks li {
         display: block;
     }
-    nav .navlinks li a{
+
+    navbar .navlinks li a {
         display: block;
         margin-bottom: 15px;
         text-align: center;
     }
-    nav .navlinks.open{
+
+    navbar .navlinks.open {
         right: 0;
     }
-}
-@media(max-width: 768px)
-{
-    .container{
-        flex-direction: column;
-        padding-top: 2rem;
+
+    header {
+        padding-bottom: 80px;
+        width: 3vw;
+        left: 97vw;
     }
-    .hero-text{
+}
+
+@media(max-width: 930px) {
+    #welcome-section {
+        flex-direction: column;
+        padding-top: 120px;
+        gap: 10px;
+    }
+
+    #welcome-section .pfp {
+        margin-bottom: 0;
+    }
+
+    .about-me-text {
         padding: 40px 0px;
     }
+
+    #project-container {
+    display: flex;
+    flex-direction: column;
+    width: min(60vw, 300px);
+    margin: auto auto;
+}
+
+.btn-show-all {
+    left: 0;
+    margin: auto auto;
+}
+
+.social-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.socials {
+    height: 50px;
+    margin-top: 10px;
+}
+    
 }
