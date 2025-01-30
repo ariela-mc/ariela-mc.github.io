@@ -163,7 +163,10 @@ navbar .navlinks li a {
     padding: 10px;
     background: var(--sec-dark);
     margin: 10px;
+    height: 400px;
+    width: 30vw;
     border: 5px solid var(--prim);
+    width: 
 }
 
 .project-tile:hover {
@@ -176,7 +179,9 @@ navbar .navlinks li a {
 }
 
 .project-tile img {
-    height: 200px;
+    width: 85%;
+    height: auto;
+    aspect-ratio: 3 / 2;
     position: relative;
     width: 90%;
     margin-left: 5%;
