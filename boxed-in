@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxed In Project</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <navbar id="navbar">
+        <div class="togglebtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+          <ul class="navlinks">
+            <li><a href="#welcome-section">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </navbar>
+    </header>
+    <main>
+      <h1>Project C: Boxed In</h1>
+      <p>A C Project</p>
+      <div class="container">
+        <video controls="controls" width="800" height="600" name="Boxed In Gameplay">
+          <source src="">
+        </video>
+        <div class="code-container">
+          <code>/*
+ENGGEN131 2024
+C Project - Boxed In
+Resource file - project2.c
+
+You can use this program to test the functions that you write before grading them with CodeRunner
+*/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+
+#define ROWS 9
+#define COLS 10
+
+#define SPACE 0
+#define WALL 1
+#define TARGET 2
+#define BOX 3
+#define BOX_ON_TARGET 4
+#define PERSON 5
+#define PERSON_ON_TARGET 6
+
+// Function prototype declarations
+void MakeBox(char *design, int width, int height);
+void PrintRoom(int room[ROWS][COLS]);
+void InitialiseRoom(int room[ROWS][COLS], char *layout);
+void LocatePerson(int room[ROWS][COLS], int *row, int *col);
+void MakeMove(int room[ROWS][COLS], char move, char *allMoves);
+int CheckGameOver(int room[ROWS][COLS]);
+void UndoMove(int room[ROWS][COLS], char *allMoves);
+
+// Original code written by Ariela Mcclame:
+
+void PrintRoom(int room[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (room[i][j] == SPACE) {
+            printf(" ");
+            }
+            else if (room[i][j] == WALL) {
+                printf("#");
+            }
+            else if (room[i][j] == TARGET) {
+                printf("*");
+            }
+            else if (room[i][j] == BOX) {
+                printf("O");
+            }
+            else if (room[i][j] == BOX_ON_TARGET) {
+                printf("@");
+            }
+            else if (room[i][j] == PERSON) {
+                printf("X");
+            }
+            else if (room[i][j] == PERSON_ON_TARGET) {
+                printf("X");
+            }
+        }
+        printf("\n");
+    }
+}
+
+void InitialiseRoom(int room[ROWS][COLS], char *layout) {
+    int currentValue;
+    int rowValue;
+    int length = strlen(layout);
+
+    for (int i = 0; i < ROWS; i++) {
+        rowValue = i*COLS;
+        for (int j = 0; j < COLS; j++) {
+            /* convert to numerical value */
+            currentValue = layout[j + rowValue] - '0'; 
+
+            if ((j + rowValue) < length) {
+                room[i][j] = currentValue;
+            }
+            else {
+                room[i][j] = 1;
+            }
+        }
+    }
+}
+
+int IsPerson (int room[ROWS][COLS], int row, int col) {
+    if (room[row][col] == 5 || room[row][col] == 6) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+void LocatePerson(int room[ROWS][COLS], int *row, int *col) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (IsPerson(room, i, j)) {
+                *row = i;
+                *col = j;
+            }
+        }
+    }
+    return;
+}
+
+void SpaceOrTarget(int room[ROWS][COLS], int row, int col) {
+    if (room[row][col] == PERSON) {
+        room[row][col] = SPACE;
+    }
+    else if (room[row][col] == PERSON_ON_TARGET) {
+        room[row][col] = TARGET;
+    }
+}
+
+int IsPersonOnTarget(int room[ROWS][COLS], int row, int col, int rowMove, int colMove) {
+    if (room[row][col] == TARGET || room[row][col] == BOX_ON_TARGET) {
+        room[row][col] = PERSON_ON_TARGET;
+        return 1;
+    }
+    else if (room[row][col] == SPACE) {
+        room[row][col] = PERSON;
+        return 1;
+    }
+    else if (room[row][col] == BOX) {
+        room[row][col] = PERSON;
+        return 1;
+    }
+    return 0;
+}
+
+int AheadOfBox(int room[ROWS][COLS], int row, int col, int rowMove, int colMove) {
+    if (room[rowMove][colMove] == TARGET) {
+        room[rowMove][colMove] = BOX_ON_TARGET;
+        return 1;
+    }
+    if (room[rowMove][colMove] == SPACE) {
+        room[rowMove][colMove] = BOX;
+        return 1;
+    }
+    return 0;
+}
+
+void MoveUp(int room[ROWS][COLS], int row, int col, char *allMoves) {
+    if (row > 0) {
+        if (room[row - 1][col] == SPACE || room[row - 1][col] == TARGET) {
+            if(IsPersonOnTarget(room, row - 1, col, row - 2, col)) {
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "w0");
+            } 
+        }
+        if (room[row - 1][col] == BOX) {
+            if(AheadOfBox(room, row - 1, col, row - 2, col)) {
+                IsPersonOnTarget(room, row - 1, col, row - 2, col);
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves,"w1"); 
+            }
+        }
+        if (room[row - 1][col] == BOX_ON_TARGET) {
+            if(AheadOfBox(room, row - 1, col, row - 2, col)) {
+                room[row - 1][col] = PERSON_ON_TARGET;
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "w1");    
+            }      
+        }        
+    }
+}
+
+void MoveLeft(int room[ROWS][COLS], int row, int col, char *allMoves) {
+    if (col > 0) {
+        if (room[row][col - 1] == SPACE || room[row][col - 1] == TARGET) {
+            if(IsPersonOnTarget(room, row, col - 1, row, col - 2)) {
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves,"a0");
+            }
+        }
+        if (room[row][col - 1] == BOX) {
+            if(AheadOfBox(room, row, col - 1, row, col - 2)) {
+                IsPersonOnTarget(room, row, col - 1, row, col - 2);
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves,"a1");
+            }
+        }
+        if (room[row][col - 1] == BOX_ON_TARGET) {
+            if(AheadOfBox(room, row, col - 1, row, col - 2)) {
+                room[row][col - 1] = PERSON_ON_TARGET;
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "a1");
+            }
+        }
+    }
+}
+
+void MoveDown(int room[ROWS][COLS], int row, int col, char *allMoves) {
+    if (row < (ROWS - 1)) {
+        if (room[row + 1][col] == SPACE || room[row + 1][col] == TARGET) {
+                if(IsPersonOnTarget(room, row + 1, col, row + 2, col)) {
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves,"s0");
+            }
+        }
+        if (room[row + 1][col] == BOX) {
+            if(AheadOfBox(room, row + 1, col, row + 2, col)) {
+                IsPersonOnTarget(room, row + 1, col, row + 2, col);
+                SpaceOrTarget(room, row, col); 
+                allMoves = strcat(allMoves, "s1");
+            }
+        }
+        if (room[row + 1][col] == BOX_ON_TARGET) {
+            if(AheadOfBox(room, row + 1, col, row + 2, col)) {
+                room[row + 1][col] = PERSON_ON_TARGET;
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "s1");
+            }     
+        }
+    }
+}
+
+void MoveRight(int room[ROWS][COLS], int row, int col, char *allMoves) {
+    if (col < (COLS - 1)) {
+        if(room[row][col + 1] == SPACE || room[row][col + 1] == TARGET) {
+            if(IsPersonOnTarget(room, row, col + 1, row, col + 2)) {
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves,"d0");
+            }
+        }
+        if (room[row][col + 1] == BOX) {
+            if(AheadOfBox(room, row, col + 1, row, col + 2)) {
+                IsPersonOnTarget(room, row, col + 1, row, col + 2);
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "d1");
+            }
+        }
+        if (room[row][col + 1] == BOX_ON_TARGET) {
+            if(AheadOfBox(room, row, col + 1, row, col + 2)) {
+                room[row][col + 1] = PERSON_ON_TARGET;
+                SpaceOrTarget(room, row, col);
+                allMoves = strcat(allMoves, "d1");
+            }
+        }        
+    }
+} 
+
+void UndoMove(int room[ROWS][COLS], char *allMoves) {
+    int length = strlen(allMoves);
+    int movedBox;
+    char moveDirection;
+    int row, col;
+
+    LocatePerson(room, &row, &col);
+    if (length >= 2) {
+        movedBox = allMoves[length - 1] - '0';
+        moveDirection = allMoves[length - 2];
+        allMoves[length - 2] = '\0';
+        if (moveDirection == 'w') {
+            if (room[row + 1][col] == TARGET) {
+                room[row + 1][col] = PERSON_ON_TARGET;
+            }
+            else if (room[row + 1][col] == SPACE) {
+                room[row + 1][col] = PERSON;
+            }
+            if (!movedBox) {
+                if (room[row][col] == PERSON) {
+                    room[row][col] = SPACE;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = TARGET;
+                }
+            }
+            else if (movedBox) {
+                if (room[row - 1][col] == BOX_ON_TARGET) {
+                    room[row - 1][col] = TARGET;
+                }
+                else if (room[row - 1][col] == BOX) {
+                    room[row - 1][col] = SPACE;
+                }
+                if (room[row][col] == PERSON) {
+                    room[row][col] = BOX;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = BOX_ON_TARGET;
+                } 
+            }
+        }
+        if (moveDirection == 'a') {
+            if (room[row][col + 1] == TARGET) {
+                room[row][col + 1] = PERSON_ON_TARGET;
+            }
+            else if (room[row][col + 1] == SPACE) {
+                room[row][col + 1] = PERSON;
+            }
+            if (!movedBox) {
+                if (room[row][col] == PERSON) {
+                    room[row][col] = SPACE;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = TARGET;
+                }
+            }
+            else if (movedBox) {
+                if (room[row][col - 1] == BOX_ON_TARGET) {
+                    room[row][col - 1] = TARGET;
+                }
+                else if (room[row][col - 1] == BOX) {
+                    room[row][col - 1] = SPACE;
+                }
+                if (room[row][col] == PERSON) {
+                    room[row][col] = BOX;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = BOX_ON_TARGET;
+                } 
+            }
+        }
+        if (moveDirection == 's') {
+            if (room[row - 1][col] == TARGET) {
+                room[row - 1][col] = PERSON_ON_TARGET;
+            }
+            else if (room[row - 1][col] == SPACE) {
+                room[row - 1][col] = PERSON;
+            }
+            if (!movedBox) {
+                if (room[row][col] == PERSON) {
+                    room[row][col] = SPACE;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = TARGET;
+                }
+            }
+            else if (movedBox) {
+                if (room[row + 1][col] == BOX_ON_TARGET) {
+                    room[row + 1][col] = TARGET;
+                }
+                else if (room[row + 1][col] == BOX) {
+                    room[row + 1][col] = SPACE;
+                }
+                if (room[row][col] == PERSON) {
+                    room[row][col] = BOX;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = BOX_ON_TARGET;
+                } 
+            }
+        }
+        if (moveDirection == 'd') {
+          if (room[row][col - 1] == TARGET) {
+                room[row][col - 1] = PERSON_ON_TARGET;
+            }
+            else if (room[row][col - 1] == SPACE) {
+                room[row][col - 1] = PERSON;
+            }
+            if (!movedBox) {
+                if (room[row][col] == PERSON) {
+                    room[row][col] = SPACE;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = TARGET;
+                }
+            }
+            else if (movedBox) {
+                if (room[row][col + 1] == BOX_ON_TARGET) {
+                    room[row][col + 1] = TARGET;
+                }
+                else if (room[row][col + 1] == BOX) {
+                    room[row][col + 1] = SPACE;
+                }
+                if (room[row][col] == PERSON) {
+                    room[row][col] = BOX;
+                }
+                else if (room[row][col] == PERSON_ON_TARGET) {
+                    room[row][col] = BOX_ON_TARGET;
+                } 
+            }
+        }
+    }
+}
+
+void MakeMove(int room[ROWS][COLS], char move, char *allMoves) {
+    int row;
+    int col;
+    LocatePerson(room, &row, &col);
+
+    if (move == 'w') {
+        MoveUp(room, row, col, allMoves);
+    }
+    if (move == 'a') {
+        MoveLeft(room, row, col, allMoves);
+    } 
+    if (move == 's') {
+        MoveDown(room, row, col, allMoves);
+    }
+    if (move == 'd') {
+        MoveRight(room, row, col, allMoves);
+    }  
+    if (move == 'z') {
+        UndoMove(room, allMoves);
+    }
+}
+
+int CheckGameOver(int room[ROWS][COLS]) {
+    int target = 0;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (room[i][j] == PERSON_ON_TARGET || room[i][j] == BOX_ON_TARGET || room[i][j] == TARGET) {
+                target = 1;
+            }
+        }
+    }
+    if (!target) {
+        return 0;
+    }
+    else {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if(room[i][j] == TARGET || room[i][j] == PERSON_ON_TARGET) {
+                    return 0;
+                }
+            }
+        }
+        return 1;
+    }
+}
+
+/***********************************************************/
+/***********************************************************/
+/************* CODE BELOW GIVEN FOR ASSIGNMENT *************/
+/***********************************************************/
+/***********************************************************/
+
+/* GetMove() returns the entered character. Invalid characters ignored */
+char GetMove(void)
+{
+	char move;
+	printf("\nEnter move: ");
+	scanf("%c", &move);
+	// Ignore any characters that are invalid
+	while ((move != 'w') && (move != 'a') && (move != 's') && (move != 'd') && (move != 'z')) {
+		scanf("%c", &move);
+	}
+	return move;
+}
+
+/* Boxed In Game */
+int main(void)
+{
+	char layout[200] = "0011111000111005100010032011001002320100111043010000100011000011111000000000000000000000000000000000";
+	int room[ROWS][COLS] = {0};
+	char allMoves[1000]  = {0};
+
+	printf("ENGGEN131 - C Project 2024\n");
+	printf("                          ... presents ...\n");
+	printf("   +------+  ____                    _   _____         _ \n");
+	printf("  /      /| |  _ \\                  | | |_   _|       | |\n");
+	printf(" +------+ | | |_) | _____  _____  __| |   | |  _ __   | |\n");
+	printf(" |      | + |  _ < / _ \\ \\/ / _ \\/ _` |   | | | '_ \\  | |\n");
+	printf(" |      |/  | |_) | (_) >  <  __/ (_| |  _| |_| | | | |_|\n");
+	printf(" +------+   |____/ \\___/_/\\_\\___|\\__,_| |_____|_| |_| (_)\n");
+	printf("\n");
+	printf("\nMove the player (X) using the keys 'w', 'a', 's', 'd'\n");
+	printf("Good luck!\n\n\n");
+
+	/* Main game loop */
+	InitialiseRoom(room, layout);
+	PrintRoom(room);
+	while (!CheckGameOver(room)) {
+		MakeMove(room, GetMove(), allMoves);
+		PrintRoom(room);
+	}
+	printf("\n\nCONGRATULATIONS!\nGame over!\n");
+	printf("Moves: %s", allMoves);
+	return 0;
+}
+</code>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
