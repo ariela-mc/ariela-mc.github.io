@@ -90,14 +90,14 @@ navbar .navlinks li a {
 #welcome-section {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 80px;
     align-items: center;
     padding-top: 180px;
 }
 
 #welcome-section .pfp {
-    width:300px;
-    height:300px;
+    width:400px;
+    height:400px;
     border-radius:20%;
     overflow: hidden;
     border: 5px solid var(--sec-dark);
@@ -116,7 +116,7 @@ navbar .navlinks li a {
 }
 
 .about-me-text {
-    max-width: 500px;
+    max-width: 700px;
     display:flex;
     flex-direction: column;
     padding-top: 5px;
@@ -138,7 +138,7 @@ navbar .navlinks li a {
 
 .about-me-text p {
     padding-top: 5px;
-    font-size: 17px;
+    font-size: 25px;
 }
 
 #projects h1, #projects h3 {
@@ -155,8 +155,6 @@ navbar .navlinks li a {
 #project-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 80vw;
-    margin: auto auto;
 }
 
 .project-tile {
@@ -166,7 +164,7 @@ navbar .navlinks li a {
     height: 400px;
     width: 30vw;
     border: 5px solid var(--prim);
-    width: 
+    text-align: center;
 }
 
 .project-tile:hover {
@@ -179,13 +177,8 @@ navbar .navlinks li a {
 }
 
 .project-tile img {
-    width: 85%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    position: relative;
-    width: 90%;
-    margin-left: 5%;
-
+    width: min(85%, 250px);
+    aspect-ratio: 1 / 1;
 }
 
 .project-tile h3 {
@@ -358,8 +351,15 @@ a {
     #project-container {
     display: flex;
     flex-direction: column;
-    width: min(60vw, 300px);
+    width: min(90vw, 500px);
     margin: auto auto;
+    text-align: center;
+    gap: 20px;
+}
+
+.project-tile {
+  margin: auto auto;
+  width: 50vw;
 }
 
 .btn-show-all {
@@ -378,4 +378,19 @@ a {
     margin-top: 10px;
 }
     
+}
+@media(max-width: 1200px) {
+    .about-me-text {
+        padding: 40px 0px;
+        max-width: 500px;
+    }
+
+    .about-me-text p {
+        font-size: 20px;
+    }
+
+    #welcome-section .pfp {
+    width:300px;
+    height:300px;
+}
 }
