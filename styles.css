@@ -336,6 +336,11 @@ a {
     }
 }
 
+<!-- BOXED IN STYLES -->
+.code-container {
+  
+}
+
 @media(max-width: 930px) {
     #welcome-section {
         flex-direction: column;
