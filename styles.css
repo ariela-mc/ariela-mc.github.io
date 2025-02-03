@@ -87,12 +87,15 @@ navbar .navlinks li a {
     color: var(--prim-light);
 }
 
+main {
+  padding-top: 80px;
+}
 #welcome-section {
     display: flex;
     justify-content: center;
     gap: 80px;
     align-items: center;
-    padding-top: 180px;
+    padding-top: 100px;
 }
 
 #welcome-section .pfp {
