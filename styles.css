@@ -54,14 +54,16 @@ nav {
     color: var(--accent);
 }
 nav .togglebtn {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    top: 45px;
+    top: 35px;
     right: 3%;
     z-index: 5;
     cursor: pointer;
     display: none;
+    background: var(--prim);
+    padding: 5px;
 }
 
 nav .togglebtn span {
@@ -101,11 +103,11 @@ main {
 #welcome-section .pfp {
     width:400px;
     height:400px;
-    border-radius:20%;
+    border-radius:45%;
     overflow: hidden;
     border: 5px solid var(--sec-dark);
     box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.5);
-    margin-bottom: 400px;
+    margin-bottom: 300px;
 }
 
 .pfp img {
@@ -120,10 +122,11 @@ main {
 
 .about-me-text {
     max-width: 700px;
+    width: 95%;
     display:flex;
     flex-direction: column;
     padding-top: 5px;
-    margin-bottom: 400px;
+    margin-bottom: 300px;
 }
 
 .about-me-text h5 {
@@ -140,8 +143,8 @@ main {
 }
 
 .about-me-text p {
-    padding-top: 5px;
     font-size: 25px;
+    padding: 5px;
 }
 
 #projects h1, #projects h3 {
@@ -153,11 +156,13 @@ main {
 #projects h1 {
     font-size: 30px;
     padding-bottom: 0;
+    padding-top: 50px;
 }
 
 #project-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 200px;
 }
 
 .project-tile {
@@ -172,9 +177,10 @@ main {
 
 .project-tile:hover {
     transform: scale(1.1);
+    box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
 }
 
-.project-tile:hover, .project-tile:hover h3, .project-tile:hover .project-img {
+.project-tile:hover, .project-tile:hover h3 {
     background: var(--prim-light);
     color: var(--sec-dark);
 }
@@ -182,11 +188,13 @@ main {
 .project-img {
   position: relative;
   width: 85%;
-  height: 80%;
-  left: 10%;
+  height: 70%;
+  left: 5%;
 }
 
 .project-img img {
+  object-fit: cover;
+  height: 100%;
   width: 100%;
   
 }
@@ -204,6 +212,8 @@ a {
     margin-bottom: 100px;
 }
 .btn-show-all {
+    position: relative;
+    top: 20px;
     padding: 12px 35px; 
     font-size: 1rem;
     background: var(--sec-light);
@@ -234,7 +244,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     margin-top: 10px;
 }
 
@@ -277,6 +287,29 @@ a {
     transform: rotate(360deg);
 }
 
+a:focus, .btn-show-all:focus {
+    outline: 3px solid var(--accent);
+}
+
+/* BOXED IN STYLES */
+.code-container {
+  
+}
+
+@media(max-width: 540px) {
+    #welcome-section {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #project-container {
+        margin-top: 0 !important;
+        top: 0 !important;
+    }
+    .project-tile {
+        width: 80vw !important;
+    }
+
+}
 @media(max-width: 770px) {
     nav .togglebtn {
         display: initial;
@@ -344,19 +377,10 @@ a {
     }
 }
 
-a:focus, .btn-show-all:focus {
-    outline: 3px solid var(--accent);
-}
-
-/* BOXED IN STYLES */
-.code-container {
-  
-}
-
-@media(max-width: 930px) {
+@media(max-width: 970px) {
     #welcome-section {
         flex-direction: column;
-        padding-top: 120px;
+        padding-top: 20px;
         gap: 10px;
     }
 
@@ -366,6 +390,7 @@ a:focus, .btn-show-all:focus {
 
     .about-me-text {
         padding: 40px 0px;
+
     }
 
     #project-container {
@@ -375,16 +400,18 @@ a:focus, .btn-show-all:focus {
     margin: auto auto;
     text-align: center;
     gap: 20px;
-}
+    }
 
-.project-tile {
-  margin: auto auto;
-  width: 50vw;
-}
+    .project-tile {
+    margin: auto auto;
+    width: 60vw;
+    height: 500px;
+    }
 
 .btn-show-all {
     left: 0;
     margin: auto auto;
+    top: 0;
 }
 
 .social-container {
