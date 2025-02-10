@@ -290,11 +290,43 @@ a {
 a:focus, .btn-show-all:focus {
     outline: 3px solid var(--accent);
 }
-
-/* BOXED IN STYLES */
-.code-container {
-  
+/* PROJECT STYLES */
+.project-heading {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 25px;
 }
+
+.container {
+    width: min(90%, 900px);
+    display: flex;
+    gap: 30px;
+    margin: auto auto;
+}
+
+.video-text {
+    position: relative;
+    top: -15px;
+    margin-bottom: 30px;
+    
+}
+
+/* boxed in */
+
+#boxed-in-container {
+    flex-direction: column;
+}
+
+#boxed-in-vid {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 0;
+}
+
+
+
+/* PROJECT STYLES END */
 
 @media(max-width: 540px) {
     #welcome-section {
