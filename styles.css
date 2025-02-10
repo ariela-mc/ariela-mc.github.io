@@ -179,9 +179,14 @@ main {
     color: var(--sec-dark);
 }
 
-.project-tile img {
-    width: min(85%, 250px);
-    aspect-ratio: 1 / 1;
+.project-img {
+    width: 85%;
+    height: 80%;
+}
+
+.project-img img {
+  width: 100%;
+  
 }
 
 .project-tile h3 {
@@ -275,6 +280,7 @@ a {
         display: initial;
         position: fixed;
         top: 30px;
+        right: 10px;
     }
 
     .click {
@@ -333,11 +339,14 @@ a {
     header {
         padding-bottom: 80px;
         width: 3vw;
-        left: 97vw;
     }
 }
 
-<!-- BOXED IN STYLES -->
+a:focus, .btn-show-all:focus {
+    outline: 3px solid var(--accent);
+}
+
+/* BOXED IN STYLES */
 .code-container {
   
 }
