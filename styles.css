@@ -174,14 +174,16 @@ main {
     transform: scale(1.1);
 }
 
-.project-tile:hover, .project-tile:hover h3, .project-tile:hover figcaption {
+.project-tile:hover, .project-tile:hover h3, .project-tile:hover .project-img {
     background: var(--prim-light);
     color: var(--sec-dark);
 }
 
 .project-img {
-    width: 85%;
-    height: 80%;
+  position: relative;
+  width: 85%;
+  height: 80%;
+  left: 10%;
 }
 
 .project-img img {
