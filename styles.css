@@ -40,7 +40,7 @@ header {
     
 }
 
-navbar {
+nav {
     font-weight: bold;
     font-size: 18px;
     position: fixed;
@@ -53,7 +53,7 @@ navbar {
 .navlinks li a:hover {
     color: var(--accent);
 }
-navbar .togglebtn {
+nav .togglebtn {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -64,7 +64,7 @@ navbar .togglebtn {
     display: none;
 }
 
-navbar .togglebtn span {
+nav .togglebtn span {
     display: block;
     background-color: var(--accent);
     margin: 5px 0px;
@@ -74,15 +74,15 @@ navbar .togglebtn span {
     transition-property: transform, opacity;
 }
 
-navbar .navlinks {
+nav .navlinks {
     list-style-type: none;
 }
 
-navbar .navlinks li {
+nav .navlinks li {
     display: inline-block;
 }
 
-navbar .navlinks li a {
+nav .navlinks li a {
     margin-right: 2.5rem;
     color: var(--prim-light);
 }
@@ -271,7 +271,7 @@ a {
 }
 
 @media(max-width: 770px) {
-    navbar .togglebtn {
+    nav .togglebtn {
         display: initial;
         position: fixed;
         top: 30px;
@@ -300,7 +300,7 @@ a {
         top:0;
     }
 
-    navbar .navlinks {
+    nav .navlinks {
         position: fixed;
         top: 0;
         right:-100%;
@@ -315,17 +315,17 @@ a {
         padding-left: 50px;
     }
 
-    navbar .navlinks li {
+    nav .navlinks li {
         display: block;
     }
 
-    navbar .navlinks li a {
+    nav .navlinks li a {
         display: block;
         margin-bottom: 15px;
         text-align: center;
     }
 
-    navbar .navlinks.open {
+    nav .navlinks.open {
         right: 0;
     }
 
