@@ -284,6 +284,7 @@ a {
     .click span {
         position: absolute;
         margin-top: 12px;
+        background-color: var(--prim);
     }
 
     .click span:first-child {
