@@ -312,6 +312,7 @@ a:focus, .btn-show-all:focus {
 
 .source-code {
   height: 500px;
+  overflow: hidden;
 }
 
 /* boxed in */
@@ -326,7 +327,6 @@ a:focus, .btn-show-all:focus {
     aspect-ratio: 16 / 9;
     margin-bottom: 0;
 }
-
 
 
 /* PROJECT STYLES END */
