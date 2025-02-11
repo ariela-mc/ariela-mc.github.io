@@ -307,8 +307,21 @@ a:focus, .btn-show-all:focus {
 .video-text {
     position: relative;
     top: -15px;
-    margin-bottom: 30px;
-    
+    margin-bottom: 50px;
+}
+
+.code {
+    overflow: auto;
+    height: 300px;
+    width: 50%;
+    display: block;
+    word-wrap: break-word;
+}
+
+.source-code {
+    height: 450px;
+    overflow: auto;
+    margin-bottom: 300px;
 }
 
 /* boxed in */
