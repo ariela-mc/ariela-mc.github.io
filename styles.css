@@ -159,7 +159,7 @@ main {
     padding-top: 50px;
 }
 
-#project-container {
+.project-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 200px;
@@ -338,7 +338,7 @@ a:focus, .btn-show-all:focus {
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
     }
-    #project-container {
+    .project-container {
         margin-top: 0 !important;
         top: 0 !important;
     }
@@ -430,7 +430,7 @@ a:focus, .btn-show-all:focus {
 
     }
 
-    #project-container {
+    .project-container {
     display: flex;
     flex-direction: column;
     width: min(90vw, 500px);
