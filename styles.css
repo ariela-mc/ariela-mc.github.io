@@ -310,7 +310,9 @@ a:focus, .btn-show-all:focus {
     margin-bottom: 50px;
 }
 
-
+.source-code {
+  height: 500px;
+}
 
 /* boxed in */
 
