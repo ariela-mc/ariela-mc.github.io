@@ -11,105 +11,119 @@
     <body>
         <header>
             <nav id="nav">
-                <div class="togglebtn">
+                <div class="toggle-btn">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-                <ul class="navlinks">
-                    <li><a href="#welcome-section">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <ul class="nav-links">
+                    <div id="nav-space">
+                        <div id="nav-space-left">
+                            <li><h2 id="logo">AM.</h2></li>
+                        </div><div id="nav-space-right">
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </div>
+                    </div>
                 </ul>
             </nav>
-         </header>
+        </header>
         <main>
-            <section id="welcome-section">
-                <div class="pfp">
-                    <img src="images/profile-pic.jpg" alt="profile picture">
+            <section id="hero" data-color="rgb(43, 9, 72)">
+                <div class="nz-bg-img">
+                    <img src="images/nz_dot.png" alt="Decorative background">
                 </div>
-                <div class="about-me-text">
-                    <h5>Hi I'm <span class="blue-text">Engineering Student</span></h5>
-                    <h1><span class="blue-text">Ariela Mcclame</span></h1>
-                    <p> An undergraduate at the university of Auckland specializing in <span class="blue-text">Computer Systems</span>. I am a passionate, capable programmer who loves practical problem solving, reading and gaming in my downtime. I grew up on the Hibiscus Coast and graduated from Kingsway School with a four-year Scholar's Award. I take pride in my creativity and attention to detail. Feel free to take a look at the projects I have completed and reach out if you would like to work together!</p>
+                <div>
+                    <h5>Hello, I'm</h5>
+                    <h1 id="intro-name"><span class="blue-txt">Ariela McClame.</span></h1>
+                    <div class="center">
+                        <p>I'm a Computer Systems Engineering Student</p>
+                    </div>
                 </div>
+                <h5><a href="#projects" class="btn intro-btn">VIEW MY WORK</a></h5>
             </section>
-            <section id="projects">
-                <h1 id="Projects"><span class="blue-text">Projects</span></h1>
-                <h3>These are some of my projects and certifications:</h3>
-                <div class="project-container">
-                    <div class="project-tile">
-                        <a href="https://ariela-mc.github.io/boxed-in.html">
-                        <h3>C Project - Boxed In</h3>
-                        <div class="project-img">
-                            <img src="images/BOXEDIN_img.jpg" alt="project c boxed in cover image" class="project-img">
-                        </div></a>
-                    </div>
-                    <div class="project-tile">
-                        <a href="https://ariela-mc.github.io/matlab-image-filters.html">
-                        <h3>MATLAB Image Filters</h3>
-                        <div class="project-img">
-                            <img src="images/matlab_logo.jpg" alt="MATLAB filtered image" class="project-img">
-                        </div></a>
-                    </div>
-                    <div class="project-tile">
-                        <a href="">
-                        <h3>Mechanical Design</h3>
-                        <div class="project-img">
-                            <img src="images/mechanical_design.jpg" alt="MAKEBOT navigating a maze" class="project-img">
-                        </div></a>
-                    </div>
-                    <div class="project-tile">
-                        <a href="https://www.freecodecamp.org/certification/ariela/responsive-web-design" target="_blank">
-                        <h3>FCC Responsive Web Design</h3>
-                        <div class="project-img">
-                            <img src="images/FCC_logo.jpg" alt="FCC certification image" class="project-img">
-                        </div></a>
-                    </div>
-                    <div class="project-tile">
-                        <a href="">
-                        <h3>MAKEBOT</h3>
-                        <div class="project-img">
-                            <img src="images/makebot_logo.jpg" alt="MAKEBOT navigating a maze" class="project-img">
-                        </div></a>
-                    </div>
-                    <div class="project-tile">
-                        <a href="">
-                        <h3>Techtorium Certification</h3>
-                        <div class="project-img">
-                            <img src="https://www.studycompare.co.nz/uploads/web/logo/2019/07/03/1/6566_1.png" alt="certification image" class="project-img">
-                        </div></a>
-                    </div>
-                    <br>
-                    <div class="btn-container">
-                        <a href="#" class="btn-show-all">Show all <i class="fas fa-chevron-right"></i></a>
+            <section id="about" data-color="#E5E5E5">
+                <h2 class="about-txt">About me</h2>
+                <div class="center container">
+                    <p class="about-txt" id="about-p">Hello there. I am a second-year <span class="blue-txt">Computer Systems Engineering</span> 
+                        student at the University of Auckland, actively building a strong foundation in system-level design and software development. 
+                        My longstanding passion for coding, combined with a growing enthusiasm for embedded system design led me into the world of 
+                        Computer Systems Engineering. I love to work one-on-one with clients to envision who will be using
+                        the program I am creating and how to effectively solve the issues that are impacting the users.
+                        I believe in improving lives one line of code at a time.
+                         <br> I am currently seeking an internship opportunity in Aotearoa where I can apply my 
+                        technical and analytical skills in a professional environment.
+                </div>
+                <div class="btn" id="cv-btn">
+                    <a href="images/Ariela_Mcclame_CV.pdf" target="_blank"><p id="cv-txt"><span class="blue-txt">Download CV</span></p></a>
+                </div>
+                <div class="center half faded-box">
+                    <div class="skills-scroller-wrapper">
+                        <div class="skills-scroller">
+                            <span class="skill-box">Java</span>
+                            <span class="skill-box">C</span>
+                            <span class="skill-box">Python</span>
+                            <span class="skill-box">OOP</span>
+                            <span class="skill-box">Data Structures</span>
+                            <span class="skill-box">Embedded Systems</span>
+                            <span class="skill-box">MATLAB</span>
+                            <span class="skill-box">R</span>
+                            <span class="skill-box">Git</span>
+                            <span class="skill-box">HTML</span>
+                            <span class="skill-box">CSS</span>
+
+                            <span class="skill-box">Java</span>
+                            <span class="skill-box">C</span>
+                            <span class="skill-box">Python</span>
+                            <span class="skill-box">OOP</span>
+                            <span class="skill-box">Data Structures</span>
+                            <span class="skill-box">Embedded Systems</span>
+                            <span class="skill-box">MATLAB</span>
+                            <span class="skill-box">R</span>
+                            <span class="skill-box">Git</span>
+                            <span class="skill-box">HTML</span>
+                            <span class="skill-box">CSS</span>
+                        </div>
                     </div>
                 </div>
             </section>
-            <section id="contact">
-                <h1><span class="blue-text">Let's work together!</span></h1>
-                <div class="social-container">
-                    <div class="btn-group">
-                        <a href="images/Ariela-Mcclame-CV.pdf" target="_blank">Download CV</a>
-                    </div>
-                    <div class="socials">
+            <section id="projects" data-color="rgb(113, 48, 66)">
+                <h2>Projects and Certifications</h2>
+                <div class="center" id="project-container">
+                    <ul>
+                        <a onclick="doesntExist()"><li class="project">Boxed In: A C project</li></a>
+                        <a onclick="doesntExist()"><li class="project">Educational App: A python project</li></a>
+                        <a onclick="doesntExist()"><li class="project">AI Colour Guesser: A Java project</li></a>
+                        <a onclick="doesntExist()"><li class="project">Map Traversal: A Java project</li></a>
+                        <a onclick="alreadyHere()"><li class="project">Personal Portfolio: A HTML5/CSS3 project</li></a>
+                        <a onclick="doesntExist()"><li class="project">Motor: A workshop project</li></a>
+                    </ul>
+                    <ul>
+                        <a onclick="doesntExist()"><li class="project">Responsive Web Design: FCC Certification </li></a>
+                        <a onclick="doesntExist()"><li class="project">Intro to Computer Programming: Techtorium Certification</li></a>
+                    </ul>
+                </div>
+            </section>
+            <section id="contact" data-color="rgb(152, 70, 63)">
+                <h2>Contact me</h2>
+                <a class="btn mailto" href="mailto:arielamc350@gmail.com"><p>Send me an email</p></a>
+                <div id="socials">
                         <a href="https://www.linkedin.com/in/ariela-mcclame-848899250/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                         <a href="https://www.instagram.com/ariela.mc/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         <a href="mailto:ariela3500@gmail.com" target="_blank"><i class="fa-brands fa-google"></i></a>
                         <a href="https://ariela-mc.github.io/" id="profile-link" target="_blank"><i class="fa-brands fa-github"></i></a>
                     </div>
-                </div>
             </section>
         </main>
-        <script>
-            /* creating button click show hide nav */
-            var togglebtn=document.querySelector(".togglebtn");
-            var nav=document.querySelector(".navlinks");
-            var links=document.querySelectorAll(".navlinks li");
-            togglebtn.addEventListener("click", function(){
-                this.classList.toggle("click");
-                nav.classList.toggle("open");
-            })
-        </script>
+        
+        <section data-color="rgb(43, 9, 72)"></section>
+        
+        <footer>
+
+        </footer>
+        
+        <script src="app.js"></script>
+
     </body>
 </html>
