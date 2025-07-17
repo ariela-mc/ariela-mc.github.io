@@ -18,6 +18,8 @@ sections.forEach(section => {
     observer.observe(section)
 })
 
+document.getElementById("proj-vid").defaultPlaybackRate = 2.0;
+
 function alreadyHere() {
     alert("You are already here!");
 }
