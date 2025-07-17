@@ -1,39 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C Project: Boxed In</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-      <nav id="nav">
-        <div class="togglebtn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-          <ul class="navlinks">
-            <li><a href="https://ariela-mc.github.io">Home</a></li>
-            <li><a href="https://ariela-mc.github.io/#projects">Projects</a></li>
-            <li><a href="https://ariela-mc.github.io/#contact">Contact</a></li>
-          </ul>
-        </nav>
-    </header>
-    <main>
-      <h1 class="project-heading">Project C: Boxed In</h1>
-      <div class="container" id="boxed-in-container">
-        <video controls="controls" width="800" height="600" name="Boxed In Gameplay" id="boxed-in-vid">
-          <source src="BOXED_IN_GAMEPLAY.mov">
-        </video>
-        <p class="video-text">Play the game <a href="https://onlinegdb.com/XYTvS18Br" target="_blank"><span class="blue-text">here</span></a>.</p>
-        <br><p>Note: This was a graded university project, wherein some code was provided by the University of Auckland. The section of original code is commented.
-        <p>View the source code:<br></p>
-        <div class="source-code">
-            <iframe src="https://onlinegdb.com/embed/XYTvS18Br?theme=dark" class="ogdb_iframe" width="100%" frameborder="0" style="width: 1px;max-width: 100%;min-width: 100%;overflow: hidden;" height="10280"></iframe>
-        </div>
-      </div>
-    </main>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Boxed In Project</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <nav id="nav">
+                <div class="toggle-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <div id="nav-space">
+                        <div id="nav-space-left">
+                            <li><h2 id="logo">AM.</h2></li>
+                        </div><div id="nav-space-right">
+                            <li><a href="ariela-mc.github.io/#about">About</a></li>
+                            <li><a href="ariela-mc.github.io/#projects">Projects</a></li>
+                            <li><a href="ariela-mc.github.io/#contact">Contact</a></li>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="project-head" data-color="rgb(43, 9, 72)">
+                <h2 class="center" id="project-heading">Boxed In: <br>A C Project</h2>
+            </section>
+            <section id="project" data-color="rgb(229, 229, 229)">
+                <div class="project-container">
+                    <div class="center">
+                        <video controls="controls" name="Boxed In Gameplay" class="vid" id="proj-vid" muted>
+                            <source src="BOXED_IN_GAMEPLAY.mov">
+                        </video>
+                    </div>
+                    <p class="black-txt">Play the game <a href="https://onlinegdb.com/XYTvS18Br" target="_blank"><span class="blue-text">here</span></a>. Press the 'Run' button.<br>
+                    <span id="proj-info">I completed this project in my first year of university (2023), applying many fundamental coding principals, including:</span><br>
+                    <ul class="a black-txt" id="project-list">
+                        <li>Defensive Programming - protects against invalid access or logic errors</li>
+                        <li>Structured Programming - procedural, clear control flow</li>
+                        <li>Mutable State + Encoded History - tracks and manipulates game state + supports undoModularity</li>
+                        <li>Modularity - clear function separation for each task</li>
+                        <li>Abstraction - reusable helper functions to simplify code</li>
+                        <li>Readability - constants & naming to improve understanding of game state</li>
+                    </ul></p>
+                    <br><p><strong>Note:</strong> This was a graded university project - some code was provided by the University of Auckland.<br>All original code authored by me is clearly commented.</p>
+                    <p class="black-txt">View the source code:<br></p>
+                    <iframe src="https://onlinegdb.com/embed/XYTvS18Br?theme=light" width="100%" frameborder="0" height="500"></iframe>
+                </div>
+            </section>
+            <section data-color="rgb(229, 229, 229)" id="filler"></section>
+        </main>
+        <section data-color="rgb(43, 9, 72)"></section>
+        <footer>
+
+        </footer>
+
+        <script src="app.js"></script>
+    </body>
 </html>
