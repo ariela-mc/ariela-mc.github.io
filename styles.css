@@ -498,7 +498,33 @@ nav .toggle-btn span {
 
 section #filler {
     height: 50vh;
-    background: red;
 }
 
+.bubble {
+  position: relative;
+  cursor: help; /* Optional: changes the cursor on hover */
+  display: inline-block;
+}
 
+.bubble .bubble-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: var(--prim-darker);
+  color: var(--accent);
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Positions it above the word */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1rem;
+}
+
+.bubble:hover .bubble-text {
+  visibility: visible;
+  opacity: 1;
+}
