@@ -1,2 +1,2 @@
 # ariela-mc.github.io
-🚧 #projects portion currently under construction 🚧
+🚧 Projects portion currently under construction 🚧
